@@ -1,0 +1,7 @@
+/node_modules/
+/public/build/
+/dist/
+dist.crx
+dist.pem
+
+.DS_Store

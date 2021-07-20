@@ -1,0 +1,86 @@
+@use 'colors';
+
+@mixin scrollbar() {
+    overflow: hidden auto;
+    overflow: hidden overlay;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border: 3px solid transparent;
+        background-color: colors.$scrollbar;
+        background-clip: padding-box;
+        border-radius: 9999px;
+    }
+}
+
+@mixin hoverHighlight() {
+    padding-right: 2px;
+    padding-left: 2px;
+
+    &:hover {
+        background-color: #00000012;
+        border-radius: 5px 5px 5px 5px / 25px 25px 25px 5px;
+    }
+}
+
+@mixin radio($color: colors.$bgcolor-dark) {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    text-align: center;
+
+    &.selected:before {
+        display: block;
+        content: '';
+        position: absolute;
+        background-color: $color;
+        height: 7px;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        z-index: -1;
+        border-radius: 50%;
+    }
+
+    &:after {
+        content: 'o';
+    }
+}
+
+@mixin checkbox($slim: true) {
+    position: relative;
+
+    &:before {
+        content: '[ \00a0]';
+        @if $slim == false {
+            font-weight: bold;
+        }
+    }
+
+    &:after {
+        position: absolute;
+        content: '';
+        left: 4px;
+        top: -1px;
+    }
+
+    &.selected:after {
+        @if $slim {
+            content: '\2713';
+        } @else {
+            content: '\2714';
+        }
+    }
+}
+
+@mixin char($nb: 1ch) {
+    display: inline-block;
+    width: $nb;
+    text-align: center;
+}
