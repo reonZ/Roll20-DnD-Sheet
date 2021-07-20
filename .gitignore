@@ -1,7 +1,8 @@
 /node_modules/
 /public/build/
 /dist/
-dist.crx
-dist.pem
+*.zip
+*.pem
+*.crx
 
 .DS_Store
